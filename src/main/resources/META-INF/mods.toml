@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="${loader_range}"
+license="MIT license. See LICENSE.txt for a copy."
+
+[[mods]]
+    modId="copperitems"
+    version="${version}"
+    displayName="Copper Items"
+    authors="shroomdog27"
+    description='''
+    Adds Copper Items.
+    '''
+[[dependencies.copperitems]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_range}"
+    ordering="NONE"
+    side="BOTH"
+    
+    
+[[dependencies.copperitems]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_range}"
+    ordering="NONE"
+    side="BOTH"
