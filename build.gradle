@@ -1,7 +1,7 @@
 import net.minecraftforge.gradle.common.tasks.SignJar
+
 buildscript {
     repositories {
-        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
     }
@@ -9,16 +9,17 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+
 plugins {
     id 'org.cadixdev.licenser' version '0.6.1'
 }
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 
-ext.artifact_version = 0.0.1
+ext.artifact_version = '0.0.1'
 version = "${minecraft_version}-${artifact_version}"
 
 group = 'org.sweetiebelle.copperitems'
@@ -67,6 +68,7 @@ minecraft {
         }
     }
 }
+
 sourceSets.main.resources { srcDir 'src/main/generated' }
 
 repositories {
@@ -75,32 +77,14 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:' + minecraft_version + '-' + forge_version
 }
-// process mods.toml to inject variables
-def modsTomlSpec = copySpec{
-    from(sourceSets.main.resources) {
-        include 'META-INF/mods.toml'
-        expand 'version': artifact_version,
-            'loader_range': loader_range,
-            'minecraft_range': minecraft_range,
-            'forge_range': forge_range
-    }
-}
-
-// task to add mods.toml to all relevant folders
-task replaceResources {
-    // ensure directory exists, first build likes to fail
-    new File("${processResources.destinationDir}/META-INF").mkdirs()
-    // copy for gradle
-    copy {
-        outputs.upToDateWhen { false }
-        with modsTomlSpec
-        into processResources.destinationDir
-    }
-}
 
 processResources {
-    exclude 'META-INF/mods.toml'
-    finalizedBy replaceResources
+  filesMatching("META-INF/mods.toml") {
+    expand 'version': artifact_version,
+           'loader_range': loader_range,
+           'minecraft_range': minecraft_range,
+           'forge_range': forge_range
+  }
 }
 
 jar {
