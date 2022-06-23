@@ -42,7 +42,7 @@ public class CopperItemsMod {
     public static final Logger LOG = LogManager.getLogger();
 
     public CopperItemsMod() {
-        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        var modBus = FMLJavaModLoadingContext.get().getModEventBus();
         CopperItems.ITEMS.register(modBus);
     }
 

@@ -24,10 +24,11 @@
 
 package net.shonx.copperitems.data;
 
-import net.shonx.copperitems.CopperItemsMod;
 import net.shonx.copperitems.CopperItems;
+import net.shonx.copperitems.CopperItemsMod;
 
 import net.minecraft.data.DataGenerator;
+
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class LanguageGenerator extends LanguageProvider {

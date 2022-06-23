@@ -28,6 +28,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.PickaxeItem;
+
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,6 +36,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class CopperItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CopperItemsMod.MODID);
 
-    public static final RegistryObject<PickaxeItem> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(CopperTier.COPPER, 1, -2.8F, (new Properties()).tab(CreativeModeTab.TAB_TOOLS)));
+    public static final RegistryObject<PickaxeItem> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(CopperTier.COPPER, 1, -2.8F, new Properties().tab(CreativeModeTab.TAB_TOOLS)));
 
 }
