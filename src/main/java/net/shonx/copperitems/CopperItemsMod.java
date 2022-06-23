@@ -22,30 +22,31 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems.data;
+package net.shonx.copperitems;
 
-import org.sweetiebelle.copperitems.CopperItemsMod;
+import java.util.Objects;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class ItemModelGenerator extends ItemModelProvider {
+import net.minecraft.resources.ResourceLocation;
 
-    private static final UncheckedModelFile ITEM_GENERATED = new UncheckedModelFile("item/generated");
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-    public ItemModelGenerator(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, CopperItemsMod.MODID, existingFileHelper);
+@Mod(CopperItemsMod.MODID)
+public class CopperItemsMod {
+
+    public static final String MODID = "copperitems";
+    public static final Logger LOG = LogManager.getLogger();
+
+    public CopperItemsMod() {
+        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        CopperItems.ITEMS.register(modBus);
     }
 
-    @Override
-    protected void registerModels() {
-        // @formatter:off
-        getBuilder("copper_pickaxe")
-             .parent(ITEM_GENERATED)
-             .texture("layer0", modLoc(ITEM_FOLDER + "/copper_pickaxe"));
-        // @formatter:on
+    public static ResourceLocation of(String name) {
+        return new ResourceLocation(MODID, Objects.requireNonNull(name));
     }
-
 }

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems;
+package net.shonx.copperitems;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;

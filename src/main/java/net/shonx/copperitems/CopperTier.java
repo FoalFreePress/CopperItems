@@ -22,46 +22,47 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems.data;
+package net.shonx.copperitems;
 
-import java.util.function.Consumer;
-
-import org.sweetiebelle.copperitems.CopperItems;
-import org.sweetiebelle.copperitems.CopperItemsMod;
-
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
-import net.minecraftforge.common.Tags;
+public class CopperTier implements Tier {
 
-public class RecipeGenerator extends RecipeProvider {
+    public static final CopperTier COPPER = new CopperTier();
 
-    public RecipeGenerator(DataGenerator generator) {
-        super(generator);
+    private CopperTier() {
+    };
+
+    @Override
+    public int getUses() {
+        return 95;
     }
 
     @Override
-    public String getName() {
-        return "SimpleBackpacks Recipe Generator";
+    public float getSpeed() {
+        return 7.0F;
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-        // @formatter:off
-        // Copper Pickaxe
-        ShapedRecipeBuilder.shaped(CopperItems.COPPER_PICKAXE.get())
-        .define('C', Items.COPPER_INGOT)
-        .define('S', Tags.Items.RODS_WOODEN)
-        .pattern("CCC")
-        .pattern(" S ")
-        .pattern(" S ")
-        .unlockedBy("has_item", has(Items.COPPER_INGOT))
-        .save(consumer, CopperItemsMod.of("copper_pickaxe"));
+    public float getAttackDamageBonus() {
+        return -1.0F;
+    }
 
-        // @formatter:on
+    @Override
+    public int getLevel() {
+        return 1;
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return 25;
+    }
+
+    @Override
+    public Ingredient getRepairIngredient() {
+        return Ingredient.of(Items.COPPER_INGOT);
     }
 
 }

@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems.data;
+package net.shonx.copperitems.data;
 
-import org.sweetiebelle.copperitems.CopperItemsMod;
-import org.sweetiebelle.copperitems.CopperItems;
+import net.shonx.copperitems.CopperItemsMod;
+import net.shonx.copperitems.CopperItems;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;

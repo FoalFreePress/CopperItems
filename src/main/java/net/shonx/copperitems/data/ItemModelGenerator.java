@@ -22,47 +22,30 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems;
+package net.shonx.copperitems.data;
 
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.shonx.copperitems.CopperItemsMod;
 
-public class CopperTier implements Tier {
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
-    public static final CopperTier COPPER = new CopperTier();
+public class ItemModelGenerator extends ItemModelProvider {
 
-    private CopperTier() {
-    };
+    private static final UncheckedModelFile ITEM_GENERATED = new UncheckedModelFile("item/generated");
 
-    @Override
-    public int getUses() {
-        return 95;
+    public ItemModelGenerator(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+        super(generator, CopperItemsMod.MODID, existingFileHelper);
     }
 
     @Override
-    public float getSpeed() {
-        return 7.0F;
-    }
-
-    @Override
-    public float getAttackDamageBonus() {
-        return -1.0F;
-    }
-
-    @Override
-    public int getLevel() {
-        return 1;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return 25;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return Ingredient.of(Items.COPPER_INGOT);
+    protected void registerModels() {
+        // @formatter:off
+        getBuilder("copper_pickaxe")
+             .parent(ITEM_GENERATED)
+             .texture("layer0", modLoc(ITEM_FOLDER + "/copper_pickaxe"));
+        // @formatter:on
     }
 
 }

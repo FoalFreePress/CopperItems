@@ -22,7 +22,7 @@ apply plugin: 'maven-publish'
 ext.artifact_version = '0.0.1'
 version = "${minecraft_version}-${artifact_version}"
 
-group = 'org.sweetiebelle.copperitems'
+group = 'net.shonx.copperitems'
 archivesBaseName = 'copperitems'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

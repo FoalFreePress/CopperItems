@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.copperitems.data;
+package net.shonx.copperitems.data;
 
 import net.minecraft.data.DataGenerator;
 
-import org.sweetiebelle.copperitems.CopperItemsMod;
+import net.shonx.copperitems.CopperItemsMod;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
